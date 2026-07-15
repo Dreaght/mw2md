@@ -1,0 +1,34 @@
+[package]
+name = "mw2md"
+version = "0.1.0"
+authors = ["Dreaght <dreaght@icloud.com>"]
+edition = "2024"
+rust-version = "1.85"
+description = "Convert MediaWiki markup to Markdown"
+readme = "README.md"
+repository = "https://github.com/Dreaght/mw2md"
+license = "MIT"
+keywords = ["cli", "mediawiki", "markdown", "conversion"]
+categories = ["command-line-utilities", "encoding"]
+publish = false
+
+[lints.rust]
+warnings = { level = "deny", priority = -1 }
+future-incompatible = { level = "deny", priority = -1 }
+let-underscore = { level = "deny", priority = -1 }
+nonstandard-style = { level = "deny", priority = -1 }
+refining-impl-trait = { level = "deny", priority = -1 }
+unknown-or-malformed-diagnostic-attributes = { level = "deny", priority = -1 }
+unused = { level = "deny", priority = -1 }
+
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "deny", priority = -1 }
+pedantic = { level = "deny", priority = -1 }
+restriction = { level = "deny", priority = -1 }
+nursery = { level = "deny", priority = -1 }
+cargo = { level = "deny", priority = -1 }
+
+[lints.rustdoc]
+all = { level = "deny", priority = -1 }
