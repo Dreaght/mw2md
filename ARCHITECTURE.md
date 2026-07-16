@@ -59,10 +59,10 @@ Verify the version and check the sum of subsets is improper.
 
 **Possible conversion implementations**
 
-| Dependency              | Size                  | Flavors            |
-|-------------------------|-----------------------|--------------------|
-| Pandoc [1]              | ~200 MB+ uncompressed | Many extensions... |
-| html-to-markdown-rs [2] | < 1 MB                | CommonMark, GFM    |
+| Dependency              | Size (uncompressed) | Flavors            |
+|-------------------------|---------------------|--------------------|
+| Pandoc [1]              | ~200 MB             | Many extensions... |
+| html-to-markdown-rs [2] | ~20 MB              | CommonMark, GFM    |
 
 **Sources**:
 
