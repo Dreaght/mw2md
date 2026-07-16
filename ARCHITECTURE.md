@@ -71,7 +71,14 @@ Verify the version and check the sum of subsets is improper.
 
 ## Offline conversion
 
-XML dump conversion with proper stripping is difficult.
+XML dump conversion with proper stripping is not trivial.
+
+- Requires templates expansion and conditionals evaluation.
+- Re-implement extensions de-bloat mechanism that influence page rendering.
+- Practically reinventing what Parsoid meant for.
+
+See [this post](https://qr.ae/pFkZg2) for details.
+
 A reliable solution is yet to be found.
 
 ## Programming language(s)
