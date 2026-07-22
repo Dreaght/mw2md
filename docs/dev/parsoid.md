@@ -11,6 +11,7 @@
 ## HTML DOM
 
 - [HTML/2.8.0 Specification](https://www.mediawiki.org/wiki/Specs/HTML/2.8.0)
+- [Wikitext/1.0.0 Specification](https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0)
 
 **Based on**:
 
@@ -79,6 +80,8 @@ What about the rest? These are not documented:
 - [Tables](https://www.mediawiki.org/wiki/Help:Tables)
 
 **Gap**: Find other content-relevant HTML tags to support.
+
+- This is probably it: [Wikitext specification (1.0.0)](https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0).
 
 ### Extension tags
 

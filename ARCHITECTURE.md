@@ -39,21 +39,19 @@
 - [SO discussion](https://stackoverflow.com/q/28782715/20399036) how Wikitext best converted into
   different output such as HTML. And the corresponding
   [blog article](https://www.gyford.com/phil/writing/2015/03/25/wikipedia-parsing/).
+- Obvious [evidence](https://www.mediawiki.org/wiki/Specs/HTML/2.8.0#cite_note-1:~:text=Some,there%2E)
+  that they suppose their specification for arbitrary consumers.
 
 ### How to normalize the data?
 
 Define three subsets of HTML tags: to strip, preserve, and change.
 Verify the version and check the sum of subsets is improper.
 
-**Gap**: It is unclear for me where all the possible semantics per HTML tags documented.
+Beyond their [Wikitext specification (1.0.0)](https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0),
+according to the [HTML specification (2.8.0)](https://www.mediawiki.org/wiki/Specs/HTML/2.8.0),
+they use RDFa based HTML tags annotation, probably to help with complex markup translation.
 
-**What can be the sources for that?**
-
-1) [Parsoid HTML Specification (2.8.0)](https://www.mediawiki.org/wiki/Specs/HTML/2.8.0).
-   Does not seem to cover all the HTML tags.
-
-2) Maybe [Rich Attributes proposal](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec/Rich_Attributes)
-   can help.
+Read a detailed explanation in [parsoid.md](docs/dev/parsoid.md).
 
 ### How to convert to Markdown?
 
@@ -69,17 +67,24 @@ Verify the version and check the sum of subsets is improper.
 1. [Pandoc](https://pandoc.org)
 2. [html-to-markdown-rs](https://crates.io/crates/html-to-markdown-rs)
 
+**Gap**: Valid HTML schema expectations?
+
 ## Offline conversion
 
 XML dump conversion with proper stripping is not trivial.
 
 - Requires templates expansion and conditionals evaluation.
 - Re-implement extensions de-bloat mechanism that influence page rendering.
+- Many tested edge cases.
 - Practically reinventing what Parsoid meant for.
 
 See [this post](https://qr.ae/pFkZg2) for details.
 
 A reliable solution is yet to be found.
+
+As an idea, to prove the compatibility with the normalization layer,
+we could partially reimplement a relevant subset of HTML translation in their own curated
+[test asset](https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/services/parsoid/+/refs/heads/master/tests/parser/parserTests.txt).
 
 ## Programming language(s)
 
