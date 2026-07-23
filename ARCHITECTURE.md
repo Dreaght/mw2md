@@ -80,11 +80,28 @@ XML dump conversion with proper stripping is not trivial.
 
 See [this post](https://qr.ae/pFkZg2) for details.
 
-A reliable solution is yet to be found.
+A reliable solution exists!
+Use [Parsoid REST API](https://www.mediawiki.org/wiki/API:REST_API/Reference#Convert_Wikitext_to_HTML)
+to convert Wikitext to HTML to make it compatible with the normalization layer of the tool.
 
-As an idea, to prove the compatibility with the normalization layer,
-we could partially reimplement a relevant subset of HTML translation in their own curated
-[test asset](https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/services/parsoid/+/refs/heads/master/tests/parser/parserTests.txt).
+What's great about this is that **any** Parsoid instance (not necessarily where
+Wikitext was copied from) can do the trick.
+
+**Proof-of-Concept**:
+
+  ```sh
+  curl -s -G https://wiki.archlinux.org/title/Arch_Linux?action=raw | \
+   jq -Rs '{"wikitext": .}' | \
+   curl -s -L \
+   -X POST https://en.wikipedia.org/w/rest.php/v1/transform/wikitext/to/html/Arch_Linux \
+   -H "Content-Type: application/json" -d @-
+  ```
+
+You can convert Wikitext obtained from **Arch Wiki** to Parsoid spec-compliant HTML
+using **Wikipedia**'s Parsoid!
+
+After all, you **do not need an internet** connection as the least good solution is
+to deploy a copy of Parsoid instance locally.
 
 ## Programming language(s)
 
