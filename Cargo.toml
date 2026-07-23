@@ -1,18 +1,35 @@
 [package]
 name = "mw2md"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+description = "Convert MediaWiki markup to Markdown"
+readme = "README.md"
+repository.workspace = true
+license.workspace = true
+keywords = ["cli", "mediawiki", "markdown", "conversion"]
+categories = ["command-line-utilities", "encoding"]
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[workspace]
+resolver = "3"
+members = ["mw-fetch", "mw-normalize", "mw-convert"]
+default-members = ["mw-fetch", "mw-normalize", "mw-convert"]
+
+[workspace.package]
 version = "0.1.0"
 authors = ["Dreaght <dreaght@icloud.com>"]
 edition = "2024"
 rust-version = "1.85"
-description = "Convert MediaWiki markup to Markdown"
-readme = "README.md"
 repository = "https://github.com/Dreaght/mw2md"
 license = "MIT"
-keywords = ["cli", "mediawiki", "markdown", "conversion"]
-categories = ["command-line-utilities", "encoding"]
 publish = false
 
-[lints.rust]
+[workspace.lints.rust]
 warnings = { level = "deny", priority = -1 }
 future-incompatible = { level = "deny", priority = -1 }
 let-underscore = { level = "deny", priority = -1 }
@@ -23,12 +40,13 @@ unused = { level = "deny", priority = -1 }
 
 unsafe_code = "forbid"
 
-[lints.clippy]
+[workspace.lints.clippy]
 all = { level = "deny", priority = -1 }
 pedantic = { level = "deny", priority = -1 }
 restriction = { level = "deny", priority = -1 }
 nursery = { level = "deny", priority = -1 }
 cargo = { level = "deny", priority = -1 }
+blanket_clippy_restriction_lints = "allow"
 
-[lints.rustdoc]
+[workspace.lints.rustdoc]
 all = { level = "deny", priority = -1 }

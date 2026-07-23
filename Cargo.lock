@@ -3,5 +3,17 @@
 version = 4
 
 [[package]]
+name = "mw-convert"
+version = "0.1.0"
+
+[[package]]
+name = "mw-fetch"
+version = "0.1.0"
+
+[[package]]
+name = "mw-normalize"
+version = "0.1.0"
+
+[[package]]
 name = "mw2md"
 version = "0.1.0"

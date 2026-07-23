@@ -42,3 +42,7 @@ in this document are to be interpreted as described in
 
 - You **MUST** adhere to [MediaWiki API Guidelines](https://www.mediawiki.org/wiki/API:Etiquette).
 - Read more [about Parsoid](docs/dev/parsoid.md).
+
+### Maintaining Cargo.toml
+
+Read [cargo-toml.md](docs/dev/cargo-toml.md) guidelines.
