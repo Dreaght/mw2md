@@ -4,9 +4,41 @@
 
 ## API Access
 
-- [API docs](https://www.mediawiki.org/wiki/Parsoid/API)
+- [MediaWiki REST API Reference](https://www.mediawiki.org/wiki/API:REST_API/Reference)
+- ~~[Parsoid REST API](https://www.mediawiki.org/wiki/Parsoid/API)~~
+  (*not guaranteed [1*], use MediaWiki REST API instead*)
 - [API reference](https://doc.wikimedia.org/Parsoid-PHP/master/md_docs_2apiuse.html)
 - [MediaWiki API Guidelines](https://www.mediawiki.org/wiki/API:Etiquette)
+
+> **[1*]** On Wikimedia wikis, Parsoid's API is not accessible on the public Internet.
+> On these wikis, you can access Parsoid's content via
+> RESTBase's REST API (e.g.: https://en.wikipedia.org/api/rest_v1/ ).
+
+**Gap**: How to reliably get `api.php` endpoint?
+
+### RSD Protocol
+
+MediaWiki implements [**Really Simple Discovery (RSD)**](https://en.wikipedia.org/wiki/Really_Simple_Discovery)
+protocol. The API endpoint can be discovered by querying any page (or following redirects from the absolute URL
+(domain)) and checking for
+`<link>` HTML tag with `rel="EditURI"` attribute.
+
+**PoC**:
+
+```sh
+curl -s -G -L "https://en.wikipedia.org/" | rg -e 'rel="EditURI"'
+```
+
+**Output**:
+
+```
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd">`
+```
+
+**Note**: It is not guaranteed that redirects from the absolute URL will lead to the main page. So this may require
+fallbacks / workarounds, up to requiring the user to research the API endpoint himself.
+
+We'll strictly define a supported subset of MediaWiki instances by default.
 
 ## HTML DOM
 
@@ -23,8 +55,7 @@
 
 **typeof** and **rel** attributes:
 
-Multiple, space-separated values.
-Example:
+Multiple, space-separated values. Example:
 
 1. `typeof="mw:Extension/TemplateStyles mw:Tranclusion"`
 2. `rel="mw:ExtLink nofollow"`
@@ -37,20 +68,20 @@ Attributes:
     - According to the
       [proposal](https://www.mediawiki.org/wiki/Parsoid/MediaWiki_DOM_spec/Template_Continuity#Range_runs_from_start_to_end):
 
-      An algorithm **SHALL NOT** enumerate ranges as series of sibling nodes.
-      But instead, in tree-order walk between unique **start** and **end**, inclusive.
+      An algorithm **SHALL NOT** enumerate ranges as series of sibling nodes. But instead, in tree-order walk between
+      unique **start** and **end**, inclusive.
 
       > The "**start**" node is the first node in tree-order with the appropriate `typeof`
-      and `about` attributes, and the "**end**" node is the last node in tree-order
-      with an `about` attribute matching the "**start**" node.
+      and `about` attributes, and the "**end**" node is the last node in tree-order with an `about` attribute matching
+      the "**start**" node.
 
-- `data-mw`: Schema is specific to the `typeof` value. It is a **JSON** object.
-  The most useful one, a great fallback for unsupported HTML tags.
+- `data-mw`: Schema is specific to the `typeof` value. It is a **JSON** object. The most useful one, a great fallback
+  for unsupported HTML tags.
 
 ### Sections
 
-The HTML body consists from `<section>` tags on the top level.
-Therefore, it makes sense to filter only them, as they contain the nested content.
+The HTML body consists from `<section>` tags on the top level. Therefore, it makes sense to filter only them, as they
+contain the nested content.
 
 - [Specification](https://www.mediawiki.org/wiki/Specs/HTML/2.8.0#Headings_and_Sections)
 - [Detailed design proposal](https://www.mediawiki.org/wiki/Parsing/Notes/Section_Wrapping)
