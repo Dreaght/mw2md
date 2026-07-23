@@ -1,0 +1,7 @@
+edition = "2024"
+hex_literal_case = "Upper"
+newline_style = "Unix"
+required_version = ">=1.0.0, <2.0.0"
+style_edition = "2024"
+use_field_init_shorthand = true
+use_try_shorthand = true
