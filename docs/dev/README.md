@@ -21,3 +21,4 @@ in this documentation are to be interpreted as described in
 - [Interacting with Parsoid](parsoid.md). See how Parsoid helps the conversion process.
 - [Dependencies](dependencies.md). See each dependency choice explanation / motivation.
 - [Maintaining Cargo.toml](cargo-toml.md). See guidelines and useful reference links.
+- [Compatibility](compatibility.md). See how to ensure features compatibility.
