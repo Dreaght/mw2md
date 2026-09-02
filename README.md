@@ -24,14 +24,10 @@ No specification yet. No public API is defined.
 
 ## Features
 
-- [ ] **NO JUNK**.
-  Strip garbage surrounding the human-written content.
-- [ ] **NO CONFLICTS**.
-  Choose what Markdown-flavor to target for proper rendering.
-- [ ] **CRAWLER**.
-  Includes any linked pages to the depth specified.
-- [ ] ~~**XML dump conversion**.
-  Export selected pages for conversion.~~ (Not _yet_ planned)
+- [ ] **NO JUNK**. Strip garbage surrounding the human-written content.
+- [ ] **NO CONFLICTS**. Choose what Markdown-flavor to target for proper rendering.
+- [ ] **CRAWLER**. Includes any linked pages to the depth specified.
+- [ ] ~~**XML dump conversion**. Export selected pages for conversion.~~ (Not _yet_ planned)
 
 ## Flavors support
 
@@ -45,10 +41,10 @@ No specification yet. No public API is defined.
 
 ## What it solves?
 
-- **Non-expanded garbage in the output**.
-  One-to-one mapping from Wikitext to Markdown is difficult, as
-  it's orders of magnitude more powerful/fine-grained than Markdown.
-- **Lossy conversion** with semantic preservation.
+- **Non-expanded garbage in the output**. One-to-one mapping from Wikitext to Markdown is difficult, as it's orders of
+  magnitude more powerful/fine-grained than Markdown.
+- **Lossy conversion** with semantic preservation. Extreme compression of knowledge bases.
+- **Compatibility** with Markdown rendering engines.
 
 ## How this works?
 
@@ -98,6 +94,10 @@ More details in [ARCHITECTURE.md](ARCHITECTURE.md).
 ## Contributing
 
 Appreciated! Please, read [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+## Documentation and questions
+
+Read [documentation](docs/README.md). I will try to answer all your questions there.
 
 ## Licence
 

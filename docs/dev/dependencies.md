@@ -12,7 +12,10 @@
 
 1) [OPTIONAL] **Pandoc** - Universal markup converter.
 
-* Hard-depending on this not exactly small (~200 MB+ uncompressed) package during
-  runtime is questionable.
-  Since the most of similar projects depended on it, so we do.
+* Hard-depending on this not exactly small (~200 MB+ uncompressed) package during runtime is questionable. Since the
+  most of similar projects depended on it, so we do.
 * Suitable to post-process the result.
+
+## Security | Slop
+
+**Gap**: You depend on dependencies. But what if some of them are slop or insecure?

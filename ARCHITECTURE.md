@@ -1,5 +1,11 @@
 # Architecture
 
+**General ideas / overview of how this project works.**
+
+Looking for the project structure / layout instead? Read [developer documentation](docs/dev/README.md).
+
+---
+
 <!-- TOC -->
 
 * [Architecture](#architecture)
@@ -8,7 +14,9 @@
         * [How to normalize the data?](#how-to-normalize-the-data)
         * [How to convert to Markdown?](#how-to-convert-to-markdown)
     * [Offline conversion](#offline-conversion)
-    * [Programming language(s)](#programming-languages)
+        * [How to convert XML dump to Markdown?](#how-to-convert-xml-dump-to-markdown)
+    * [Programming language (s)](#programming-language-s)
+    * [Layout of the project](#layout-of-the-project)
     * [Dependencies](#dependencies)
 
 <!-- TOC -->
@@ -26,8 +34,8 @@
 **Meanings**:
 
 - [1*] **Annotated** means that we can filter each fragment by semantics.
-- [2*] **Expanded** means that the content is complete, does not contain templates
-  and does not require additional scraping.
+- [2*] **Expanded** means that the content is complete, does not contain templates and does not require additional
+  scraping.
 - [3*] **Wikitext** is MediaWiki markup language.
 - [4*] **metadata**. Pages or wiki metadata needed for migration / searchability purposes.
 
@@ -36,20 +44,20 @@
 - See [this post](https://qr.ae/pFkZg2) for an explanation for the architectural choice.
 - HTML DOM over plain Wikitext, see
   [this statement](https://doc.wikimedia.org/Parsoid-PHP/master/md_docs_2apiuse.html#:~:text=If,responses).
-- [SO discussion](https://stackoverflow.com/q/28782715/20399036) how Wikitext best converted into
-  different output such as HTML. And the corresponding
+- [SO discussion](https://stackoverflow.com/q/28782715/20399036) how Wikitext best converted into different output such
+  as HTML. And the corresponding
   [blog article](https://www.gyford.com/phil/writing/2015/03/25/wikipedia-parsing/).
 - Obvious [evidence](https://www.mediawiki.org/wiki/Specs/HTML/2.8.0#cite_note-1:~:text=Some,there%2E)
   that they suppose their specification for arbitrary consumers.
 
 ### How to normalize the data?
 
-Define three subsets of HTML tags: to strip, preserve, and change.
-Verify the version and check the sum of subsets is improper.
+Define three subsets of HTML tags: to strip, preserve, and change. Verify the version and check the sum of subsets is
+improper.
 
-Beyond their [Wikitext specification (1.0.0)](https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0),
-according to the [HTML specification (2.8.0)](https://www.mediawiki.org/wiki/Specs/HTML/2.8.0),
-they use RDFa based HTML tags annotation, probably to help with complex markup translation.
+Beyond their [Wikitext specification (1.0.0)](https://www.mediawiki.org/wiki/Specs/wikitext/1.0.0), according to
+the [HTML specification (2.8.0)](https://www.mediawiki.org/wiki/Specs/HTML/2.8.0), they use RDFa based HTML tags
+annotation, probably to help with complex markup translation.
 
 Read a detailed explanation in [parsoid.md](docs/dev/parsoid.md).
 
@@ -71,6 +79,8 @@ Read a detailed explanation in [parsoid.md](docs/dev/parsoid.md).
 
 ## Offline conversion
 
+### How to convert XML dump to Markdown?
+
 XML dump conversion with proper stripping is not trivial.
 
 - Requires templates expansion and conditionals evaluation.
@@ -84,8 +94,8 @@ A reliable solution exists!
 Use [Parsoid REST API](https://www.mediawiki.org/wiki/API:REST_API/Reference#Convert_Wikitext_to_HTML)
 to convert Wikitext to HTML to make it compatible with the normalization layer of the tool.
 
-What's great about this is that **any** Parsoid instance (not necessarily where
-Wikitext was copied from) can do the trick.
+What's great about this is that **any** Parsoid instance (not necessarily where Wikitext was copied from) can do the
+trick.
 
 **Proof-of-Concept**:
 
@@ -97,13 +107,12 @@ Wikitext was copied from) can do the trick.
    -H "Content-Type: application/json" -d @-
   ```
 
-You can convert Wikitext obtained from **Arch Wiki** to Parsoid spec-compliant HTML
-using **Wikipedia**'s Parsoid!
+You can convert Wikitext obtained from **Arch Wiki** to Parsoid spec-compliant HTML using **Wikipedia**'s Parsoid!
 
-After all, you **do not need an internet** connection as the least good solution is
-to deploy a copy of Parsoid instance locally.
+After all, you **do not need an internet** connection as the least good solution is to deploy a copy of Parsoid instance
+locally.
 
-## Programming language(s)
+## Programming language (s)
 
 **Which programming language is best to choose for this project?**
 
@@ -138,6 +147,10 @@ It appears obvious that **xberg-io/html-to-markdown-rs**
 is the unmatched center of the universe. There is no point in using it through FFI.
 
 Therefore, **Rust** was chosen.
+
+## Layout of the project
+
+See [workspace-members.md](docs/dev/workspace-members.md) for details.
 
 ## Dependencies
 

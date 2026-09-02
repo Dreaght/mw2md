@@ -14,31 +14,7 @@
 > On these wikis, you can access Parsoid's content via
 > RESTBase's REST API (e.g.: https://en.wikipedia.org/api/rest_v1/ ).
 
-**Gap**: How to reliably get `api.php` endpoint?
-
-### RSD Protocol
-
-MediaWiki implements [**Really Simple Discovery (RSD)**](https://en.wikipedia.org/wiki/Really_Simple_Discovery)
-protocol. The API endpoint can be discovered by querying any page (or following redirects from the absolute URL
-(domain)) and checking for
-`<link>` HTML tag with `rel="EditURI"` attribute.
-
-**PoC**:
-
-```sh
-curl -s -G -L "https://en.wikipedia.org/" | rg -e 'rel="EditURI"'
-```
-
-**Output**:
-
-```
-<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd">`
-```
-
-**Note**: It is not guaranteed that redirects from the absolute URL will lead to the main page. So this may require
-fallbacks / workarounds, up to requiring the user to research the API endpoint himself.
-
-We'll strictly define a supported subset of MediaWiki instances by default.
+See [compatibility.md](compatibility.md) to verify whether a website API is compatible.
 
 ## HTML DOM
 

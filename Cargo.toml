@@ -17,7 +17,7 @@ workspace = true
 
 [workspace]
 resolver = "3"
-members = ["mw-fetch", "mw-normalize", "mw-convert"]
+members = ["mw-fetch", "mw-parsoid", "mw-normalize", "mw-convert"]
 default-members = ["mw-fetch", "mw-normalize", "mw-convert"]
 
 [workspace.package]

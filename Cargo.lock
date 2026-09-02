@@ -15,5 +15,9 @@ name = "mw-normalize"
 version = "0.1.0"
 
 [[package]]
+name = "mw-parsoid"
+version = "0.1.0"
+
+[[package]]
 name = "mw2md"
 version = "0.1.0"

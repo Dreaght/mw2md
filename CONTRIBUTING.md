@@ -1,3 +1,36 @@
+# Contributing
+
+## How to understand this project? (Q/A)
+
+---
+
+**Q: WHY and HOW this project works (high-level ideas)?**
+
+**A:** [ARCHITECTURE.md](ARCHITECTURE.md) gives the overall idea (_not necessarily technical_)
+
+---
+
+**Q: JUST show the project LAYOUT.**
+
+**A:** [workspace-members.md](docs/dev/workspace-members.md) shows what each crate / package does.
+
+---
+
+**Q: Other concepts?**
+
+**A:** Read the [developer documentation](docs/dev/README.md) Table of Content.
+
+---
+
+**Q: I don't understand anything / didn't find what I wanted, your documentation sucks...**
+
+**A:** Sorry for that, I really tried to make it as understandable as possible. Open issue or email me
+to [dreaght@icloud.com](mailto:dreaght@icloud.com) with your question and/or suggestion for documentation improvements.
+
+---
+
+Continue reading for patching / maintenance guidelines.
+
 The key words:
 
 - "**MUST**", "**MUST NOT**", "**REQUIRED**",
@@ -16,8 +49,8 @@ in this document are to be interpreted as described in
     - You **MUST** bump [Cargo.toml](Cargo.toml)'s `version`.
     - You **MUST** adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
       for every `version` change.
-    - You **MUST** update [CHANGELOG.md](CHANGELOG.md).
-      You **SHALL NOT** dump `git log` or any artificially generated content there.
+    - You **MUST** update [CHANGELOG.md](CHANGELOG.md). You **SHALL NOT** dump `git log` or any artificially generated
+      content there.
 
 ## How to format commits?
 
@@ -30,9 +63,8 @@ in this document are to be interpreted as described in
 ## Methodology / Guidelines
 
 - You **SHOULD** adhere to **Test-Driven-Development (TDD)** methodology.
-- You **SHALL NOT** use **AI-Driven-Development (AIDD)**,
-  including, but not limited to, **AI Spec-Driven-Development (SDD)**.
-  See [AI Policy](docs/dev/ai-policy.md) for more details.
+- You **SHALL NOT** use **AI-Driven-Development (AIDD)**, including, but not limited to, **AI Spec-Driven-Development (
+  SDD)**. See [AI Policy](docs/dev/ai-policy.md) for more details.
 
 ### Command Line Interface (CLI)
 

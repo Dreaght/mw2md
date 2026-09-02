@@ -17,7 +17,7 @@ in this documentation are to be interpreted as described in
 
 ## Table of Content
 
-- [Workspace members](workspace-members.md). Project packages, see why they are independent.
+- [**Workspace members**](workspace-members.md). **Project layout:** packages, see why they are independent.
 - [Interacting with Parsoid](parsoid.md). See how Parsoid helps the conversion process.
 - [Dependencies](dependencies.md). See each dependency choice explanation / motivation.
 - [Maintaining Cargo.toml](cargo-toml.md). See guidelines and useful reference links.
